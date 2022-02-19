@@ -18,8 +18,8 @@ sealed class HackInstruction(var lineNumber: Int) {
     class LabelInstruction(val label: String, lineNumber: Int = 0) : HackInstruction(lineNumber)
 }
 
-sealed class CToken(val value: String? = null) {
-    class DEST(value: String?) : CToken(value)
-    class COMP(value: String?) : CToken(value)
-    class JUMP(value: String?) : CToken(value)
+sealed class CToken(val value: String) {
+    class DEST(value: String) : CToken(value)
+    class COMP(value: String) : CToken(value)
+    class JUMP(value: String) : CToken(value)
 }

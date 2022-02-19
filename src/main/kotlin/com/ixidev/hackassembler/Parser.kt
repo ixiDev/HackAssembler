@@ -92,21 +92,21 @@ class Parser(
             error("C instruction is empty")
         return when {
             (split.size == 3) -> HackInstruction.CInstruction(
-                dest = CToken.DEST(split.getOrNull(0)),
-                comp = CToken.COMP(split.getOrNull(1)),
-                jump = CToken.JUMP(split.getOrNull(2)),
+                dest = CToken.DEST(split[0]),
+                comp = CToken.COMP(split[1]),
+                jump = CToken.JUMP(split[2]),
             )
             (split.size == 2) and line.contains(";") -> {
                 HackInstruction.CInstruction(
                     dest = CToken.DEST("null"),
-                    comp = CToken.COMP(split.getOrNull(0)),
-                    jump = CToken.JUMP(split.getOrNull(1)),
+                    comp = CToken.COMP(split[0]),
+                    jump = CToken.JUMP(split[1]),
                 )
             }
             (split.size == 2) and line.contains("=") -> {
                 HackInstruction.CInstruction(
-                    dest = CToken.DEST(split.getOrNull(0)),
-                    comp = CToken.COMP(split.getOrNull(1)),
+                    dest = CToken.DEST(split[0]),
+                    comp = CToken.COMP(split[1]),
                     jump = CToken.JUMP("null"),
                 )
             }
