@@ -41,15 +41,18 @@ class Parser(
                     // skip
                 } else {
                     val instruction: HackInstruction = parseLineInstruction(trimed)
-                    // set label address as the current instruction size
-                    if (instruction is HackInstruction.LabelInstruction)
+                    // do not add labels to instruction list
+                    // just add its position(address) to symbol table
+                    if (instruction is HackInstruction.LabelInstruction) {
                         symbolTable.add(
                             instruction.label,
-                            instructions.count { it !is HackInstruction.LabelInstruction }
+                            instructions.size
                         )
-                    // keep tracking the instruction line number
-                    instruction.lineNumber = lineNumber
-                    instructions.add(instruction)
+                    } else {
+                        // keep tracking the instruction line number
+                        instruction.lineNumber = lineNumber
+                        instructions.add(instruction)
+                    }
                 }
                 lineNumber++
 

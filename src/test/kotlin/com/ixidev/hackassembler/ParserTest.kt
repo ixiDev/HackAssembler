@@ -32,7 +32,7 @@ internal class ParserTest {
         )
         val instructions = parser.parse()
 
-        assertEquals(instructions.size, 19)
+        assertEquals(instructions.size, 16)
     }
 
     @Test
