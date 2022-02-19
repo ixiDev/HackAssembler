@@ -117,20 +117,11 @@ class Parser(
     }
 
     private fun parseAInstruction(line: String): HackInstruction.AInstruction {
-        // a lot of work here
-        // look to Symbole table
-
+        // look to Symbols table
         val value = line.removePrefix("@").trimEnd() // remove only the spaces at the end
         if (value.startsWith(" ")) // @[space]xxx not valid
             error("Invalid whitespaces in A instruction ")
-
-//        val intAddress = value.toIntOrNull()
-//        if (intAddress != null)
         return HackInstruction.AInstruction(value)
-
-//        // check Symbols table
-//        val address = symbolTable.getOrAdd(value)
-//        return HackInstruction.AInstruction(address)
     }
 
 }
